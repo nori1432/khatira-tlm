@@ -35,7 +35,7 @@ const AdminPage: React.FC = () => {
     setLoading(true);
     
     try {
-      await axios.post('https://khatira-tlm.vercel.app//api/admin/login', {
+      await axios.post('https://khatira-tlm.vercel.app/api/admin/login', {
         password: password
       });
       setIsAuthenticated(true);
@@ -49,7 +49,7 @@ const AdminPage: React.FC = () => {
 
   const loadCurrentPhase = async () => {
     try {
-      const response = await axios.get('https://khatira-tlm.vercel.app//api/admin/phase');
+      const response = await axios.get('https://khatira-tlm.vercel.app/api/admin/phase');
       setCurrentPhase(response.data.current_phase);
     } catch (error) {
       console.error('Error loading current phase:', error);
@@ -58,7 +58,7 @@ const AdminPage: React.FC = () => {
 
   const loadKhawatir = async () => {
     try {
-      const response = await axios.get('https://khatira-tlm.vercel.app//api/admin/khawatir');
+      const response = await axios.get('https://khatira-tlm.vercel.app/api/admin/khawatir');
       setKhawatir(response.data.khawatir);
     } catch (error) {
       console.error('Error loading khawatir:', error);
@@ -67,7 +67,7 @@ const AdminPage: React.FC = () => {
 
   const changePhase = async (newPhase: number) => {
     try {
-      await axios.post('https://khatira-tlm.vercel.app//api/admin/phase', {
+      await axios.post('https://khatira-tlm.vercel.app/api/admin/phase', {
         phase: newPhase
       });
       setCurrentPhase(newPhase);
@@ -80,7 +80,7 @@ const AdminPage: React.FC = () => {
   const deleteKhatira = async (id: number) => {
     setLoading(true);
     try {
-      await axios.delete(`https://khatira-tlm.vercel.app//api/admin/khawatir/${id}`);
+      await axios.delete(`https://khatira-tlm.vercel.app/api/admin/khawatir/${id}`);
       setKhawatir(khawatir.filter(k => k.id !== id));
       setShowDeleteConfirm(null);
       alert('تم حذف الخاطرة بنجاح');
@@ -93,7 +93,7 @@ const AdminPage: React.FC = () => {
   const clearAllKhawatir = async () => {
     setLoading(true);
     try {
-      await axios.delete('https://khatira-tlm.vercel.app//api/admin/khawatir/clear-all');
+      await axios.delete('https://khatira-tlm.vercel.app/api/admin/khawatir/clear-all');
       setKhawatir([]);
       setShowClearAllConfirm(false);
       alert('تم حذف جميع الخواطر بنجاح');
@@ -423,3 +423,4 @@ const AdminPage: React.FC = () => {
 
 
 export default AdminPage;
+

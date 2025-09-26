@@ -32,7 +32,7 @@ const HomePage: React.FC = () => {
 
   const loadKhawatir = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/khawatir');
+      const response = await axios.get('https://khatira-tlm.vercel.app/api/khawatir');
       setKhawatir(response.data.khawatir);
       setPhase(response.data.phase);
     } catch (error) {
@@ -46,7 +46,7 @@ const HomePage: React.FC = () => {
 
     setLoading(true);
     try {
-      await axios.post('http://localhost:5000/api/submit', {
+      await axios.post('https://khatira-tlm.vercel.app/api/submit', {
         name: name.trim(),
         content: content.trim()
       });
@@ -66,7 +66,7 @@ const HomePage: React.FC = () => {
     if (phase !== 2) return;
 
     try {
-      await axios.post('http://localhost:5000/api/vote', {
+      await axios.post('https://khatira-tlm.vercel.app/api/vote', {
         khatira_id: khatiralId,
         vote_type: voteType
       });
@@ -281,5 +281,6 @@ const HomePage: React.FC = () => {
     </div>
   );
 };
+
 
 export default HomePage;

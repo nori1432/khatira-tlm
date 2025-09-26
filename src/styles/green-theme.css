@@ -1,0 +1,489 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Scheherazade+New:wght@400;500;600;700&family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&family=Almarai:wght@300;400;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Green Gradient Color Palette */
+  --primary-green: #065f46;
+  --primary-green-light: #047857;
+  --secondary-green: #059669;
+  --accent-green: #10b981;
+  --light-green: #34d399;
+  --mint-green: #6ee7b7;
+  --pale-green: #a7f3d0;
+  --cream-white: #f8fafc;
+  --pure-white: #ffffff;
+  --text-dark: #1f2937;
+  --text-gray: #6b7280;
+  --gradient-primary: linear-gradient(135deg, #065f46 0%, #047857 50%, #059669 100%);
+  --gradient-secondary: linear-gradient(135deg, #10b981 0%, #34d399 50%, #6ee7b7 100%);
+  --gradient-bg: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 50%, #a7f3d0 100%);
+  --shadow-green: 0 10px 25px rgba(6, 95, 70, 0.15);
+  --shadow-green-hover: 0 15px 35px rgba(6, 95, 70, 0.25);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bouncy: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-family: 'Tajawal', 'Cairo', 'Almarai', serif;
+    line-height: 1.8;
+    scroll-behavior: smooth;
+    font-size: 16px;
+    direction: rtl;
+  }
+
+  body {
+    background: var(--gradient-bg);
+    min-height: 100vh;
+    color: var(--text-dark);
+    overflow-x: hidden;
+    padding-bottom: 2rem; /* Extra padding for Arabic text */
+  }
+
+  .font-arabic-cursive {
+    font-family: 'Scheherazade New', 'Amiri', serif;
+    font-size: 1.45rem;
+    line-height: 2.5;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    font-weight: 500;
+    padding: 0.5rem 0 1rem 0; /* Extra bottom padding */
+    margin-bottom: 0.75rem; /* Bottom margin for Arabic text */
+  }
+
+  .font-arabic-title {
+    font-family: 'Cairo', 'Tajawal', sans-serif;
+    font-weight: 800;
+    font-size: 2.25rem;
+    line-height: 1.6;
+    padding: 0.25rem 0 0.75rem 0; /* Bottom padding for Arabic */
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+  }
+
+  .font-arabic-subtitle {
+    font-family: 'Tajawal', 'Cairo', sans-serif;
+    font-weight: 600;
+    font-size: 1.35rem;
+    line-height: 1.8;
+    padding: 0.25rem 0 0.5rem 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .font-arabic-body {
+    font-family: 'Almarai', 'Cairo', sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 2;
+    padding: 0.25rem 0 0.5rem 0;
+  }
+
+  .font-arabic-button {
+    font-family: 'Cairo', 'Tajawal', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+  }
+
+  /* Arabic text improvements */
+  [dir="rtl"] {
+    text-align: right;
+  }
+
+  /* Enhanced scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, #ecfdf5, #d1fae5);
+    border-radius: 15px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary);
+    border-radius: 15px;
+    border: 2px solid #ecfdf5;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--gradient-secondary);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    position: relative;
+    overflow: hidden;
+    background: var(--gradient-primary);
+    color: white;
+    font-weight: 700;
+    padding: 1.25rem 2.5rem;
+    border-radius: 1.25rem;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-green);
+    font-size: 1.2rem;
+    font-family: 'Cairo', 'Tajawal', sans-serif;
+    letter-spacing: 0.5px;
+    line-height: 1.8;
+    margin: 0.5rem 0 1rem 0; /* Bottom margin for Arabic text */
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-green-hover);
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-primary:hover::before {
+    left: 100%;
+  }
+
+  .btn-secondary {
+    background: white;
+    color: #065f46;
+    font-weight: 600;
+    padding: 0.875rem 1.5rem;
+    border-radius: 1rem;
+    border: 2px solid #d1fae5;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1);
+    font-family: 'Cairo', 'Tajawal', sans-serif;
+    line-height: 1.6;
+    margin: 0.25rem 0 0.75rem 0;
+  }
+
+  .btn-secondary:hover {
+    background: #ecfdf5;
+    border-color: #a7f3d0;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+  }
+
+  .btn-danger {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #f87171 100%);
+    color: white;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+    font-size: 1rem;
+    font-family: 'Cairo', 'Tajawal', sans-serif;
+    letter-spacing: 0.3px;
+    line-height: 1.8;
+    margin: 0.5rem 0 1rem 0;
+  }
+
+  .btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+    background: linear-gradient(135deg, #b91c1c 0%, #dc2626 50%, #ef4444 100%);
+  }
+
+  .card {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    border: 1px solid #d1fae5;
+    box-shadow: 0 8px 30px rgba(6, 95, 70, 0.08);
+    transition: var(--transition-smooth);
+    backdrop-filter: blur(10px);
+    margin-bottom: 2rem; /* Extra margin for Arabic text spacing */
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(6, 95, 70, 0.15);
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 1.25rem 1.5rem 1.5rem 1.5rem; /* Extra bottom padding for Arabic */
+    text-align: right;
+    border-radius: 1rem;
+    border: 2px solid #d1fae5;
+    background: rgba(255, 255, 255, 0.95);
+    font-size: 1.15rem;
+    font-family: 'Almarai', 'Cairo', sans-serif;
+    font-weight: 500;
+    line-height: 1.8;
+    transition: var(--transition-smooth);
+    margin-bottom: 0.75rem; /* Bottom margin for Arabic text */
+  }
+
+  .input-field:focus {
+    border-color: #10b981;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.1);
+    background: white;
+  }
+
+  .textarea-field {
+    width: 100%;
+    padding: 1.25rem 1.5rem 2rem 1.5rem; /* Extra bottom padding for Arabic */
+    text-align: right;
+    border-radius: 1rem;
+    border: 2px solid #d1fae5;
+    background: rgba(255, 255, 255, 0.95);
+    font-size: 1.15rem;
+    font-family: 'Almarai', 'Cairo', sans-serif;
+    font-weight: 400;
+    line-height: 2;
+    min-height: 180px;
+    transition: var(--transition-smooth);
+    resize: none;
+    margin-bottom: 1rem; /* Bottom margin for Arabic text */
+  }
+
+  .textarea-field:focus {
+    border-color: #10b981;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.1);
+    background: white;
+  }
+
+  .khatira-card {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    border-right: 8px solid #10b981;
+    box-shadow: 0 10px 40px rgba(6, 95, 70, 0.1);
+    transition: var(--transition-smooth);
+    backdrop-filter: blur(10px);
+    margin-bottom: 2.5rem; /* Extra margin for Arabic text */
+  }
+
+  .khatira-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(6, 95, 70, 0.2);
+    border-right-width: 12px;
+  }
+
+  .vote-button {
+    @apply flex items-center justify-center space-x-3 px-6 py-3 rounded-full font-semibold text-lg;
+    transition: var(--transition-bouncy);
+    min-width: 120px;
+  }
+
+  .vote-button:hover {
+    transform: scale(1.15);
+  }
+
+  .vote-up {
+    @apply bg-green-100 hover:bg-green-200 text-green-700 border-2 border-green-300;
+  }
+
+  .vote-down {
+    @apply bg-red-100 hover:bg-red-200 text-red-700 border-2 border-red-300;
+  }
+
+  .vote-up-active {
+    @apply bg-green-500 text-white border-green-600;
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+  }
+
+  .vote-down-active {
+    @apply bg-red-500 text-white border-red-600;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+  }
+
+  .phase-indicator {
+    @apply inline-flex items-center px-6 py-3 rounded-full text-lg font-bold;
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: var(--shadow-green);
+  }
+
+  .admin-card {
+    @apply bg-white rounded-2xl p-6 border-2;
+    transition: var(--transition-smooth);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  }
+
+  .admin-card-active {
+    @apply border-green-500 bg-green-50;
+    box-shadow: 0 12px 40px rgba(16, 185, 129, 0.15);
+  }
+
+  .admin-card-inactive {
+    @apply border-gray-200 hover:border-green-300;
+  }
+
+  .stat-card {
+    @apply bg-white rounded-2xl p-8 text-center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: var(--transition-smooth);
+  }
+
+  .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-effect {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+@layer utilities {
+  .shadow-glow-green {
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-in-out;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounceSubtle 3s infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-green {
+    animation: pulseGreen 2s infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceSubtle {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulseGreen {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(16, 185, 129, 0);
+  }
+}
+
+/* Enhanced responsive design */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  
+  .font-arabic-cursive {
+    font-size: 1.2rem;
+    line-height: 2;
+  }
+
+  .font-arabic-title {
+    font-size: 1.5rem;
+  }
+  
+  .card {
+    @apply p-6;
+  }
+
+  .khatira-card {
+    @apply p-6;
+  }
+
+  .input-field, .textarea-field {
+    @apply px-4 py-3;
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .vote-button {
+    @apply px-4 py-2 text-base;
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    @apply p-4;
+  }
+
+  .khatira-card {
+    @apply p-4;
+  }
+
+  .vote-button {
+    @apply space-x-2 px-3 py-2 text-sm;
+    min-width: 80px;
+  }
+}
